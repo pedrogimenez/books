@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloWorldController extends AbstractController
 {
-    /** @route("/") */
+    /** @Route("/") */
     public function index()
     {
         return new Response("Hello, world!");
