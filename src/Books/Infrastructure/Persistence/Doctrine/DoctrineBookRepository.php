@@ -6,8 +6,8 @@ namespace Books\Infrastructure\Persistence\Doctrine;
 
 use Books\Domain\Model\Book;
 use Books\Domain\Model\BookRepository;
-
 use Books\Domain\Model\ISBN;
+
 use Doctrine\ORM\EntityManager;
 
 class DoctrineBookRepository implements BookRepository
