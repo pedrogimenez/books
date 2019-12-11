@@ -17,6 +17,21 @@ class Book
         $this->setDescription($description);
     }
 
+    public function isbn()
+    {
+        return $this->isbn;
+    }
+
+    public function title()
+    {
+        return $this->title;
+    }
+
+    public function description()
+    {
+        return $this->description;
+    }
+
     private function setTitle($title)
     {
         $this->assertValidTitle($title);

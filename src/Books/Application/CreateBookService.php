@@ -17,12 +17,12 @@ class CreateBookService
         $this->bookRepository = $bookRepository;
     }
 
-    public function execute()
+    public function execute(CreateBookRequest $request)
     {
-        $book = new Book(new ISBN('irrelevant isbn'), 'irrelevant title', 'irrelevant description');
+        $book = new Book(new ISBN($request->isbn()), $request->title(), $request->description());
 
         $this->bookRepository->add($book);
 
-        return $book;
+        return new BookDTO($book);
     }
 }
