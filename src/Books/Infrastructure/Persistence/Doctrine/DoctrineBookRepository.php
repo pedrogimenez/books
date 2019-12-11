@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Books\Infrastructure\Persistence\Doctrine;
 
 use Books\Domain\Model\Book;

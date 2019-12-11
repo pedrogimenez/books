@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Books\Application;
 
 use Books\Domain\Model\Book;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Books\Domain\Model;
 
 class Book
@@ -11,7 +13,35 @@ class Book
     public function __construct(ISBN $isbn, $title, $description)
     {
         $this->isbn = $isbn;
+        $this->setTitle($title);
+        $this->setDescription($description);
+    }
+
+    private function setTitle($title)
+    {
+        $this->assertValidTitle($title);
+
         $this->title = $title;
+    }
+
+    private function setDescription($description)
+    {
+        $this->assertValidDescription($description);
+
         $this->description = $description;
+    }
+
+    private function assertValidTitle($title)
+    {
+        if (empty($title)) {
+            throw new \InvalidArgumentException('Title cannot be empty');
+        }
+    }
+
+    private function assertValidDescription($description)
+    {
+        if (empty($description)) {
+            throw new \InvalidArgumentException('Description cannot be empty');
+        }
     }
 }
