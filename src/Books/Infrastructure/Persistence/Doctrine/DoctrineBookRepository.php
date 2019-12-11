@@ -18,6 +18,7 @@ class DoctrineBookRepository implements BookRepository
 
     public function add(Book $book)
     {
-        // TODO: Implement add() method.
+        $this->em->persist($book);
+        $this->em->flush();
     }
 }

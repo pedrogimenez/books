@@ -13,6 +13,6 @@ doctrine:
             App:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/'
-                prefix: 'App\Entity'
+                dir: '%kernel.project_dir%/../../Persistence/Doctrine/Mapping/'
+                prefix: 'Books\Domain\Model'
                 alias: App
