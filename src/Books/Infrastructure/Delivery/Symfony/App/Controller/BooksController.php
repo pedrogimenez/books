@@ -20,7 +20,7 @@ class BooksController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      */
-    public function index(Request $request)
+    public function create(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
