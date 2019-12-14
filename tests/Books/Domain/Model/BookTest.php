@@ -11,8 +11,9 @@ class BookTest extends \PHPUnit\Framework\TestCase
     public function iThrowsAnErrorWhenTheTitleIsEmpty()
     {
         $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Title cannot be empty');
 
-        $isbn = new ISBN('irrelevant');
+        $isbn = new ISBN('9780872203495');
         new Book($isbn, '', 'irrelevant');
     }
 
@@ -20,8 +21,9 @@ class BookTest extends \PHPUnit\Framework\TestCase
     public function iThrowsAnErrorWhenTheDescriptionIsEmpty()
     {
         $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Description cannot be empty');
 
-        $isbn = new ISBN('irrelevant');
+        $isbn = new ISBN('9780872203495');
         new Book($isbn, 'irrelevant', '');
     }
 }

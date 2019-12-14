@@ -37,7 +37,7 @@ class DoctrineBookRepositoryTest extends KernelTestCase
     public function itFindsByISBN()
     {
         $bookRepository = new DoctrineBookRepository($this->em);
-        $isbn = new ISBN('irrelevant');
+        $isbn = new ISBN('9780872203495');
         $book = new Book($isbn, 'irrelevant', 'irrelevant');
 
         $bookRepository->add($book);
