@@ -19,6 +19,11 @@ class DoctrineBookRepository implements BookRepository
         $this->em = $em;
     }
 
+    public function findAll()
+    {
+        return $this->em->getRepository('Books\Domain\Model\Book')->findAll();
+    }
+
     public function findByISBN(ISBN $isbn)
     {
         return $this->em->find('Books\Domain\Model\Book', $isbn->isbn());

@@ -32,8 +32,12 @@ services:
     create_book_service:
         class: Books\Application\CreateBookService
 
+    list_books_service:
+        class: Books\Application\ListBooksService
+
     book_repository:
         class: Books\Infrastructure\Persistence\Doctrine\DoctrineBookRepository
 
     Books\Application\CreateBookService: '@create_book_service'
+    Books\Application\ListBooksService: '@list_books_service'
     Books\Domain\Model\BookRepository: '@book_repository'

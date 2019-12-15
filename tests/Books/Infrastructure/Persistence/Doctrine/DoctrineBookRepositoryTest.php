@@ -34,7 +34,7 @@ class DoctrineBookRepositoryTest extends KernelTestCase
     }
 
     /** @test */
-    public function itFindsByISBN()
+    public function itFindsABookByISBN()
     {
         $bookRepository = new DoctrineBookRepository($this->em);
         $isbn = new ISBN('9780872203495');
@@ -44,5 +44,21 @@ class DoctrineBookRepositoryTest extends KernelTestCase
 
         $bookFound = $bookRepository->findByISBN($book->isbn());
         $this->assertNotNull($bookFound);
+    }
+
+    /** @test */
+    public function itFindsAllBooks()
+    {
+        $bookRepository = new DoctrineBookRepository($this->em);
+        $isbn = new ISBN('9780872203495');
+        $book = new Book($isbn, 'irrelevant', 'irrelevant');
+        $anotherIsbn = new ISBN('0132350882');
+        $anotherBook = new Book($anotherIsbn, 'irrelevant', 'irrelevant');
+
+        $bookRepository->add($book);
+        $bookRepository->add($anotherBook);
+
+        $booksFound = $bookRepository->findAll();
+        $this->assertEquals($booksFound, [$book, $anotherBook]);
     }
 }
