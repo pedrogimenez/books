@@ -29,3 +29,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    create_book_service:
+        class: Books\Application\CreateBookService
+
+    book_repository:
+        class: Books\Infrastructure\Persistence\Doctrine\DoctrineBookRepository
+
+    Books\Application\CreateBookService: '@create_book_service'
+    Books\Domain\Model\BookRepository: '@book_repository'

@@ -8,13 +8,13 @@ use Books\Domain\Model\Book;
 use Books\Domain\Model\BookRepository;
 use Books\Domain\Model\ISBN;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 class DoctrineBookRepository implements BookRepository
 {
     private $em;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
     }

@@ -6,7 +6,6 @@ namespace Books\Infrastructure\Delivery\Symfony\App\Controller;
 
 use Books\Application\CreateBookRequest;
 use Books\Application\CreateBookService;
-use Books\Infrastructure\Persistence\Doctrine\DoctrineBookRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,16 +17,13 @@ class BooksController extends AbstractController
     /**
      * @Route("/books", methods={"POST"})
      * @param Request $request
+     * @param CreateBookService $bookService
      * @return JsonResponse
      */
-    public function create(Request $request)
+    public function create(Request $request, CreateBookService $bookService)
     {
-        $em = $this->getDoctrine()->getManager();
-
         $params = json_decode($request->getContent(), true);
 
-        $bookRepository = new DoctrineBookRepository($em);
-        $bookService = new CreateBookService($bookRepository);
         $bookRequest = new CreateBookRequest(
             $params['isbn'],
             $params['title'],
